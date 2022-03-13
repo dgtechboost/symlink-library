@@ -122,6 +122,46 @@
           }
         }
       }
+    },
+    "dg-library": {
+      "projectType": "library",
+      "root": "projects/dg-library",
+      "sourceRoot": "projects/dg-library/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/dg-library/tsconfig.lib.json",
+            "project": "projects/dg-library/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dg-library/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dg-library/src/test.ts",
+            "tsConfig": "projects/dg-library/tsconfig.spec.json",
+            "karmaConfig": "projects/dg-library/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/dg-library/tsconfig.lib.json",
+              "projects/dg-library/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "symlink-library"
